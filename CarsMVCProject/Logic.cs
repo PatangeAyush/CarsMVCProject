@@ -19,7 +19,7 @@ namespace CarsMVCProject
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
 
         #region  ---------- Get Car Logic ------------
-        public List<GetCarModel> Getcar()
+        public List<GetCarModel> Getcars()
         {
             SqlCommand cmd = new SqlCommand("SpGetcars", con);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
