@@ -1,0 +1,116 @@
+﻿@model IEnumerable<CarsMVCProject.Models.GetCarModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (@TempData["InsertMessege"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <strong>Success! </strong> @TempData["InsertMessege"]
+    </div>
+}
+
+
+@if (@TempData["UpdateMessege"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+
+        <strong>Success! </strong> @TempData["UpdateMessege"]
+    </div>
+}
+
+@if (@TempData["DeleteCar"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+
+        <strong>Success! </strong> @TempData["DeleteCar"]
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<div class="container my-4">
+
+    <form method="get" action="@Url.Action("Index", "Car")">
+
+        <label class="sr-only" for="SearchbyCarName">Search by:</label>
+        @Html.RadioButton("Searchby", "CarName", true, new { id = "SearchbyCarName" })
+        <label class="form-check-label" for="SearchbyCarName">BookName</label>
+
+        <input type="text" name="Search" id="Search" value="@Request.QueryString["Search"]" class="form-control" placeholder="SEARCH Car NAME" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CarName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Carprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ManufacturingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CarName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Carprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufacturingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CID)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.UploadImage))
+                {
+                    <img src="@Url.Content(item.UploadImage)" alt="Book Image" style="width: 100px; height: auto;" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Image/default.jpg")" alt="Default Image" style="width: 100px; height: 100px;" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+
+<label>Total Numbers Of Cars</label>
+@ViewBag.Count
+
+

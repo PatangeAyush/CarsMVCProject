@@ -1,0 +1,64 @@
+﻿@model CarsMVCProject.Models.GetCarModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GetCarModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturingDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
